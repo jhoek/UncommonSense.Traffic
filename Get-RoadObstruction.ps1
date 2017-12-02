@@ -1,3 +1,7 @@
+<#
+.SYNOPSIS
+Retrieves information from vananaarbeter.nl about current and future obstructions on Dutch roads.
+#>
 function Get-RoadObstruction
 {
     param
