@@ -60,5 +60,58 @@
                 </TableRowEntries>
             </TableControl>
         </View>
+        <View>
+            <Name>UncommonSense.Traffic.TrafficIncident</Name>
+            <ViewSelectedBy>
+                <TypeName>UncommonSense.Traffic.TrafficIncident</TypeName>
+            </ViewSelectedBy>
+            <TableControl>
+                <TableHeaders>
+                    <TableColumnHeader>
+                        <Label>RoadName</Label>
+                        <Width>35</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Label>FromName</Label>
+                        <Width>20</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Label>ToName</Label>
+                        <Width>20</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Label>Distance</Label>
+                        <Width>10</Width>
+                        <Alignment>Right</Alignment>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Label>Delay</Label>
+                        <Width>10</Width>
+                        <Alignment>Right</Alignment>
+                    </TableColumnHeader>
+                </TableHeaders>
+                <TableRowEntries>
+                    <TableRowEntry>
+                        <TableColumnItems>
+                            <TableColumnItem>
+                                <ScriptBlock>'{0} {1} - {2}' -f $_.RoadNo, $_.SegmentFrom, $_.SegmentTo</ScriptBlock>
+                            </TableColumnItem>                            
+                            <TableColumnItem>
+                                <PropertyName>JamFrom</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>JamTo</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <ScriptBlock>"$([math]::Round($_.Distance / 1000)) km"</ScriptBlock>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <ScriptBlock>"$($_.Delay.TotalMinutes) min."</ScriptBlock>
+                            </TableColumnItem>
+                        </TableColumnItems>
+                    </TableRowEntry>        
+                </TableRowEntries>
+            </TableControl>
+        </View>
     </ViewDefinitions>
 </Configuration>
